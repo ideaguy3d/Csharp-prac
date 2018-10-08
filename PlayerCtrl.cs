@@ -14,12 +14,6 @@ public class PlayerCtrl : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -29,4 +23,28 @@ public class PlayerCtrl : MonoBehaviour {
 
         rb.AddForce(movement * speed);
     }
+
+    // Destroy everything that enters the trigger
+    void OnTriggerEnter(Collider otherCollider)
+    {
+        /*
+         
+            Destroy(otherCollider.gameObject);
+
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Destroy(other.gameObject);
+            }
+
+            gameObject.SetActive(false);
+
+        */
+
+        if(otherCollider.gameObject.CompareTag("Pick Up"))
+        {
+            otherCollider.gameObject.SetActive(false);
+        }
+
+    }
+
 }
