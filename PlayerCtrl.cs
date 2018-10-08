@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour {
 
-    public float thrust;
-    public RigidBody rb;
+    public float speed;
+    private Rigidbody rb;
 
 
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<RigidBody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -27,6 +27,6 @@ public class PlayerCtrl : MonoBehaviour {
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        rb.AddForce(movement);
+        rb.AddForce(movement * speed);
     }
 }
