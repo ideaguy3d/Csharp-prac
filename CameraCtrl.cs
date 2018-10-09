@@ -15,8 +15,8 @@ public class CameraCtrl : MonoBehaviour {
 	
     private void LateUpdate()
     {
+
         transform.position = player.transform.position + offset;
 
-        // transform.position += offset; 
     }
 }

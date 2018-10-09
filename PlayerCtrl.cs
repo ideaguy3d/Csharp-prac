@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerCtrl : MonoBehaviour {
 
     public float speed;
     private Rigidbody rb;
-
+    private int count;
+    public Text countText;
+    public Text winText;
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        count = 0;
+        SetCountText();
+        winText.text = " "; 
     }
 
     void FixedUpdate()
@@ -43,8 +50,19 @@ public class PlayerCtrl : MonoBehaviour {
         if(otherCollider.gameObject.CompareTag("Pick Up"))
         {
             otherCollider.gameObject.SetActive(false);
+            count++;
+            SetCountText(); 
         }
 
+    }
+
+    void SetCountText()
+    {
+        countText.text = "Count Text: " + count.ToString();
+        if(count >= 6)
+        {
+            winText.text = "You Win !! \\^_^/";
+        }
     }
 
 }
